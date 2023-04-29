@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 // A simple 2D movement controller for a player in Unity
 public class PlayerMovementController : MonoBehaviour
@@ -18,6 +19,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float jumpVelocity = 2;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 2.0f;
+
+    [SerializeField] private MMFeedbacks movement_MMF;
 
     private bool airborne = false;
     #endregion
@@ -54,6 +57,16 @@ public class PlayerMovementController : MonoBehaviour
     {
         // Detect and store horizontal player input   
         playerInput = Input.GetAxisRaw("Horizontal");
+        if(playerInput != 0 && !airborne) {
+            movement_MMF.PlayFeedbacks();
+        }
+        else {
+            movement_MMF.StopFeedbacks();
+        }
+        if(airborne) {
+            movement_MMF.ResetFeedbacks();
+            movement_MMF.StopFeedbacks();
+        }
 
         // NB: Here, you might want to set the player's animation,
         // e.g. idle or walking
