@@ -10,9 +10,15 @@ public class Mailbox : MonoBehaviour
 
     public bool open = true;
 
+    private GameController gameController;
+
+    private void Start() {
+        gameController = FindObjectOfType<GameController>();
+    }
     public void Close() {
         spriteRenderer.sprite = closedSprite;
         open = false;
+        gameController.WinCheck();
         // TODO: Juice it up
     }
 
