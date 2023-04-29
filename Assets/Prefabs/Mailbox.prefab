@@ -43,7 +43,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 54405863071031486}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 37c460fe3fe546d4980c0bd76bc70e18, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 54405863687010473}
-  closedSprite: {fileID: 21300000, guid: 4610953f5212c004db3aa025160bfd71, type: 3}
-  openedSprite: {fileID: 21300000, guid: aa47a2bd41096734d948ed2629c2f358, type: 3}
+  closedSprite: {fileID: 21300000, guid: aa47a2bd41096734d948ed2629c2f358, type: 3}
+  openedSprite: {fileID: 21300000, guid: 4610953f5212c004db3aa025160bfd71, type: 3}
   open: 1
 --- !u!1 &54405863687010472
 GameObject:

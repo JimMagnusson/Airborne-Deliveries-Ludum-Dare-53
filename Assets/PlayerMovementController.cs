@@ -24,7 +24,8 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private MMFeedbacks movement_MMF;
 
-    private bool airborne = false;
+    public bool airborne = false;
+    public bool launched = false;
     #endregion
 
     #region Component references
@@ -45,9 +46,15 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Mailbox")) {
-            airborne = false;
+            //launched = false;
         }
-        
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Mailbox")) {
+            //airborne = true;
+            //launched = false;
+        }
     }
 
     #endregion
@@ -78,7 +85,7 @@ public class PlayerMovementController : MonoBehaviour
 
         // Move the player horizontally
         // If player tries to move in same direction as before, take the max of current velocity x (could be higher due to launches) and playerInput
-        if((playerInput == 0 || playerInput * rb.velocity.x > 0) && airborne) { // if same sign & airborne
+        if((playerInput == 0 || playerInput * rb.velocity.x > 0) && launched) { // if same sign & launched
             if(rb.velocity.x > 0) {
                 rb.velocity = new Vector2(Mathf.Max(playerInput * speed, rb.velocity.x), rb.velocity.y);
             }
@@ -90,6 +97,7 @@ public class PlayerMovementController : MonoBehaviour
         // Otherwise, let the player immediately change direction. Feels better
         else {
             rb.velocity = new Vector2(playerInput * speed, rb.velocity.y);
+            launched = false;
         }
         
 
@@ -132,6 +140,7 @@ public class PlayerMovementController : MonoBehaviour
     public void LaunchToward(Vector2 direction) {
         if(airborne) {
             rb.velocity = direction * launchVelocity;
+            launched = true;
         }
     }
 
