@@ -17,6 +17,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float speed = 250;
 
     [SerializeField] private float jumpVelocity = 2;
+
+    [SerializeField] private float launchVelocity = 4;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 2.0f;
 
@@ -64,7 +66,7 @@ public class PlayerMovementController : MonoBehaviour
             movement_MMF.StopFeedbacks();
         }
         if(airborne) {
-            movement_MMF.ResetFeedbacks();
+            //movement_MMF.ResetFeedbacks(); - not sure how to reset them
             movement_MMF.StopFeedbacks();
         }
 
@@ -75,7 +77,21 @@ public class PlayerMovementController : MonoBehaviour
         SwapSprite();
 
         // Move the player horizontally
-        rb.velocity = new Vector2(playerInput * speed, rb.velocity.y);
+        // If player tries to move in same direction as before, take the max of current velocity x (could be higher due to launches) and playerInput
+        if((playerInput == 0 || playerInput * rb.velocity.x > 0) && airborne) { // if same sign & airborne
+            if(rb.velocity.x > 0) {
+                rb.velocity = new Vector2(Mathf.Max(playerInput * speed, rb.velocity.x), rb.velocity.y);
+            }
+            else {
+                rb.velocity = new Vector2(Mathf.Min(playerInput * speed, rb.velocity.x), rb.velocity.y);
+            }
+            
+        }
+        // Otherwise, let the player immediately change direction. Feels better
+        else {
+            rb.velocity = new Vector2(playerInput * speed, rb.velocity.y);
+        }
+        
 
         if(Input.GetButton("Jump") && !airborne) {
             rb.velocity = new Vector2(rb.velocity.x, Vector2.up.y * jumpVelocity);
@@ -110,6 +126,12 @@ public class PlayerMovementController : MonoBehaviour
                 transform.localScale.y,
                 transform.localScale.z
             );
+        }
+    }
+
+    public void LaunchToward(Vector2 direction) {
+        if(airborne) {
+            rb.velocity = direction * launchVelocity;
         }
     }
 
