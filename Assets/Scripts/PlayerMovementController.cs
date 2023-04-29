@@ -14,6 +14,7 @@ public class PlayerMovementController : MonoBehaviour
     private float playerInput = 0;
 
     // Horizontal player speed
+    [SerializeField] GameObject body;
     [SerializeField] private float speed = 250;
 
     [SerializeField] private float jumpVelocity = 2;
@@ -107,7 +108,7 @@ public class PlayerMovementController : MonoBehaviour
         // Right
         if (playerInput > 0)
         {
-            transform.localScale = new Vector3(
+            body.transform.localScale = new Vector3(
                 Mathf.Abs(transform.localScale.x),
                 transform.localScale.y,
                 transform.localScale.z
@@ -116,10 +117,10 @@ public class PlayerMovementController : MonoBehaviour
         // Left
         else if (playerInput < 0)
         {
-            transform.localScale = new Vector3(
-                -1 * Mathf.Abs(transform.localScale.x),
-                transform.localScale.y,
-                transform.localScale.z
+            body.transform.localScale = new Vector3(
+                -1 * Mathf.Abs(body.transform.localScale.x),
+                body.transform.localScale.y,
+                body.transform.localScale.z
             );
         }
     }

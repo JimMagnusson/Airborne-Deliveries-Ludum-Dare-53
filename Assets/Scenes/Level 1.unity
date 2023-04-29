@@ -239,6 +239,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &2099812567 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2845456846690025581, guid: d491bd5762df4dd46b5b0077f80385a8, type: 3}
+  m_PrefabInstance: {fileID: 2845456846315862034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &54405863945618398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,6 +328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1688476593, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2099812567}
     - target: {fileID: 2591414550226015504, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
       propertyPath: m_Name
       value: Player
@@ -499,21 +508,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
-      propertyPath: showWinScreenTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
-      propertyPath: mailboxes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
       propertyPath: mailboxes.Array.data[0]
       value: 
       objectReference: {fileID: 54405863945618400}
-    - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
-      propertyPath: mailboxes.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3593789247807503121, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -575,18 +572,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3773855305228278519, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855305228278519, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855305228278519, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9528302
-      objectReference: {fileID: 0}
     - target: {fileID: 3773855305678510217, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -674,14 +659,6 @@ PrefabInstance:
     - target: {fileID: 3773855305678510221, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855306126373104, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.a
-      value: 0.39607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855306126373110, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3593789247807503121}
   - component: {fileID: 3593789247807503120}
   - component: {fileID: 3593789247807503122}
+  - component: {fileID: 1361477213}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -47,8 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mailboxes:
   - {fileID: 0}
-  - {fileID: 0}
-  showWinScreenTime: 3
+  showWinScreenTime: 1.5
 --- !u!114 &3593789247807503122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,3 +66,16 @@ MonoBehaviour:
   RetryImage: {fileID: 0}
   PauseImage: {fileID: 0}
   StartGameImage: {fileID: 0}
+--- !u!114 &1361477213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593789247807503127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da67dc395ac9984182ca5db73e150d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfPapers: 3

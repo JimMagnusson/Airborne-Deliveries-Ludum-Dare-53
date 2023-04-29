@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject paperPrefab;
+    [SerializeField] private GameObject paperPrefab;
 
-    public float throwingSpeed = 2f;
+    [SerializeField] private Sprite bagFilledPlayerSprite;
+
+    [SerializeField] private Sprite bagEmptyPlayerSprite;
+
+    [SerializeField] private float throwingSpeed = 2f;
     private PlayerMovementController playerMovementController;
+    private LevelSettings levelSettings;
+    private int papersLeft;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMovementController = GetComponent<PlayerMovementController>();
+        levelSettings = FindObjectOfType<LevelSettings>();
+        papersLeft = levelSettings.GetNumberOfPapers();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0) && papersLeft > 0) {
             HandlePaperThrowing();
         }
     }
@@ -33,5 +43,9 @@ public class Player : MonoBehaviour
         Vector2 playerToCursor = (mouseWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
         paper.Throw(playerToCursor, throwingSpeed);
         playerMovementController.LaunchToward(-playerToCursor);
+        papersLeft--;
+        if(papersLeft <= 0) {
+            spriteRenderer.sprite = bagEmptyPlayerSprite;
+        }
     }
 }
