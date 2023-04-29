@@ -363,7 +363,7 @@ MonoBehaviour:
   body: {fileID: 2591414550271154206}
   speed: 5
   jumpVelocity: 7
-  launchVelocity: 10
+  launchVelocity: 11
   fallMultiplier: 2
   lowJumpMultiplier: 1.5
   movement_MMF: {fileID: 294602426}

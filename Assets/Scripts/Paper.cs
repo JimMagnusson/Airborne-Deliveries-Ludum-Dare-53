@@ -6,7 +6,7 @@ public class Paper : MonoBehaviour
 {
     public bool thrown = false;
 
-    [SerializeField] private float fallMultiplier = 2.5f;
+    private float fallMultiplier = 2.5f;
 
     private Rigidbody2D rb;
     private Vector2 throwDirection;
@@ -21,16 +21,18 @@ public class Paper : MonoBehaviour
     void Update()
     {
         // Remove low physics feel
+        
         if(rb.velocity.y < 0) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
     }
 
-    public void Throw(Vector2 direction, float speed) {
+    public void Throw(Vector2 direction, float speed, float fallMultiplier) {
         thrown = true;
         this.speed = speed;
         throwDirection = direction.normalized;
         rb.velocity = throwDirection * this.speed;
+        this.fallMultiplier = fallMultiplier;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
