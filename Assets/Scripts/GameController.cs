@@ -35,4 +35,10 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(showWinScreenTime);
         levelLoader.LoadNextScene();
     }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.R)) {
+            levelLoader.ReloadScene();
+        }
+    }
 }
