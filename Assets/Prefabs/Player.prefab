@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2591414550226015514}
   - component: {fileID: 2591414550226015509}
   - component: {fileID: 2591414550226015515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655cae5f62a42f84c9d140c5e1acc0b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
+  speed: 5
+  jumpVelocity: 6
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
 --- !u!50 &2591414550226015514
 Rigidbody2D:
   serializedVersion: 4
@@ -64,12 +67,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &2591414550226015509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,9 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82458ed332a1f44da5bc8123ddfd34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paperPrefab: {fileID: 0}
-  paperSpawnPos: {fileID: 0}
-  throwingSpeed: 2
+  paperPrefab: {fileID: 7377129715096307040, guid: 3b7099f3250954647a919040dcd8ca01, type: 3}
+  throwingSpeed: 7
 --- !u!1 &2591414550271154206
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1e72e9876f520554980c094ba6f84326, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

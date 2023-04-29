@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3253655808348487225}
   - component: {fileID: 1799262152}
   - component: {fileID: 1799262153}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c435e02c71a49c46a21771a55a6dae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   thrown: 0
+  fallMultiplier: 1.5
 --- !u!50 &1799262152
 Rigidbody2D:
   serializedVersion: 4
