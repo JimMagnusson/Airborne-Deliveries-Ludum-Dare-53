@@ -33,16 +33,23 @@ public class Paper : MonoBehaviour
         rb.velocity = throwDirection * this.speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.CompareTag("Mailbox")) {
-            Mailbox mailbox = other.gameObject.GetComponent<Mailbox>();
-            if(mailbox.open) {
-                mailbox.Close();
-            }
-            else {
-                mailbox.Open();
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Mailbox")) 
+        {
+            if(other.gameObject.GetComponent<Mailbox>().open) {
+                Mailbox mailbox = other.gameObject.GetComponent<Mailbox>();
+                if(mailbox.open) {
+                    mailbox.Close();
+                    Destroy(this.gameObject);
+                }
+                else {
+                    mailbox.Open();
+                    Destroy(this.gameObject);
+                }
             }
         }
-        Destroy(this.gameObject);
+        else {
+            Destroy(this.gameObject);
+        }
     }
 }
