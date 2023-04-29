@@ -44,19 +44,6 @@ public class PlayerMovementController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Mailbox")) {
-            //launched = false;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Mailbox")) {
-            //airborne = true;
-            //launched = false;
-        }
-    }
-
     #endregion
 
     #region Gameplay methods
