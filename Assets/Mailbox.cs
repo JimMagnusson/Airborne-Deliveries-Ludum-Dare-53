@@ -8,12 +8,16 @@ public class Mailbox : MonoBehaviour
     public Sprite closedSprite;
     public Sprite openedSprite;
 
+    public bool open = true;
+
     public void Close() {
         spriteRenderer.sprite = closedSprite;
+        open = false;
         // TODO: Juice it up
     }
 
     public void Open() {
         spriteRenderer.sprite = openedSprite;
+        open = true;
     }
 }
