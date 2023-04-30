@@ -25,6 +25,11 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private MMFeedbacks movement_MMF;
 
+    [SerializeField] private AudioClip launchClip;
+    [SerializeField] private AudioClip jumpClip;
+
+
+
     public bool airborne = false;
     public bool launched = false;
     #endregion
@@ -32,6 +37,7 @@ public class PlayerMovementController : MonoBehaviour
     #region Component references
 
     private Rigidbody2D rb;
+    private AudioSource audioSource;
 
     #endregion
 
@@ -43,6 +49,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         // Get component references
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     #endregion
@@ -92,6 +100,8 @@ public class PlayerMovementController : MonoBehaviour
         if(Input.GetButton("Jump") && !airborne) {
             rb.velocity = new Vector2(rb.velocity.x, Vector2.up.y * jumpVelocity);
             airborne = true;
+            audioSource.clip = jumpClip;
+            audioSource.Play();
         }
 
         if(rb.velocity.y < 0) {
@@ -129,6 +139,8 @@ public class PlayerMovementController : MonoBehaviour
         if(airborne) {
             rb.velocity = direction * launchVelocity;
             launched = true;
+            audioSource.clip = launchClip;
+            audioSource.Play();
         }
     }
 

@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private bool limitPapers = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +34,12 @@ public class Player : MonoBehaviour
         lineRenderer.material.mainTextureScale = new Vector2(1f / lineWidth, 1.0f);
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && papersLeft > 0) {
+        if(Input.GetMouseButtonDown(0) && (!limitPapers || papersLeft > 0)) {
             HandlePaperThrowing();
         }
 
@@ -58,9 +62,12 @@ public class Player : MonoBehaviour
         Vector2 playerToCursor = (mouseWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
         paper.Throw(playerToCursor, throwingSpeed, paperFallMultiplier);
         playerMovementController.LaunchToward(-playerToCursor);
-        papersLeft--;
-        if(papersLeft <= 0) {
-            spriteRenderer.sprite = bagEmptyPlayerSprite;
+
+        if(limitPapers) {
+            papersLeft--;
+            if(papersLeft <= 0) {
+                spriteRenderer.sprite = bagEmptyPlayerSprite;
+            }
         }
         
     }
