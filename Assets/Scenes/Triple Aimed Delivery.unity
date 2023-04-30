@@ -566,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2845456846690025618, guid: d491bd5762df4dd46b5b0077f80385a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 2845456846690025618, guid: d491bd5762df4dd46b5b0077f80385a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -619,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2969493450353662666, guid: 78b12c0aa38a8144f908cd982eca38f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 2969493450353662666, guid: 78b12c0aa38a8144f908cd982eca38f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -742,6 +742,10 @@ PrefabInstance:
       propertyPath: WinLevelImage
       value: 
       objectReference: {fileID: 851314868}
+    - target: {fileID: 3593789247807503122, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
+      propertyPath: totalTimeTimerTMP
+      value: 
+      objectReference: {fileID: 3773855305295509573}
     - target: {fileID: 3593789247807503127, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -845,6 +849,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
+--- !u!114 &3773855305295509573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1780903350, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
+  m_PrefabInstance: {fileID: 3773855305295509572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5276971420325244328
 PrefabInstance:
   m_ObjectHideFlags: 0

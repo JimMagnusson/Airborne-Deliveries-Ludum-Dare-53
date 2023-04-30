@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3593789247807503120}
   - component: {fileID: 3593789247807503122}
   - component: {fileID: 1361477213}
+  - component: {fileID: 370647030339869004}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -66,6 +67,9 @@ MonoBehaviour:
   RetryImage: {fileID: 0}
   PauseImage: {fileID: 0}
   StartGameImage: {fileID: 0}
+  EndGameTimeUI: {fileID: 0}
+  totalTimeTimerTMP: {fileID: 0}
+  endTimeUITMP: {fileID: 0}
 --- !u!114 &1361477213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,3 +83,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfPapers: 1
+--- !u!114 &370647030339869004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593789247807503127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303ef46e277567145bae4766167551d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -57,7 +57,9 @@ public class Paper : MonoBehaviour
 
     public void StartReturningPaper() {
         returning = true;
-        trailRenderer.enabled = true;
+        if(trailRenderer != null) {
+            trailRenderer.enabled = true;
+        }
     }
 
     public void Throw(Vector2 direction, float speed, float fallMultiplier) {
