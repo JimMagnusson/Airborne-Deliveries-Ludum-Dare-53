@@ -31,7 +31,7 @@ public class Orb : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Paper") && !recharging) {
+        if(other.CompareTag("Paper") && !recharging && !other.GetComponent<Paper>().IsReturning()){
             idleOuterFeedbacks.StopFeedbacks();
             idleInnerFeedbacks.StopFeedbacks();
 

@@ -31,9 +31,7 @@ public class Player : MonoBehaviour
 
     public GameObject resetPapersParticleSystemPivot;
 
-    public List<Paper> thrownPapers;
-
-    public bool returnPaperWhenGrounded = false;
+    private List<Paper> returnablePapers;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +40,7 @@ public class Player : MonoBehaviour
         levelSettings = FindObjectOfType<LevelSettings>();
         papersLeft = levelSettings.GetNumberOfPapers();
         lineRenderer.material.mainTextureScale = new Vector2(1f / lineWidth, 1.0f);
-        thrownPapers = new List<Paper>();
+        returnablePapers = new List<Paper>();
     }
 
 
@@ -63,16 +61,16 @@ public class Player : MonoBehaviour
             DrawTrajectory(playerToCursor*throwingSpeed);
         }
 
-        if(returnPaperWhenGrounded && !playerMovementController.airborne) {
-            returnPaperWhenGrounded = false;
-
-
-            if(thrownPapers.Count > 0) {
-                foreach(Paper paper in thrownPapers) {
-                    paper.StartReturningPaper();
-                }
+        if(returnablePapers.Count > 0 && !playerMovementController.airborne) {
+            foreach(Paper paper in returnablePapers) {
+                paper.StartReturningPaper();
             }
+            returnablePapers = new List<Paper>();
         }
+    }
+
+    public void AddToReturnablePapers(Paper paper) {
+        returnablePapers.Add(paper);
     }
 
     private void HandlePaperThrowing(Vector2 playerToCursor) {
@@ -80,7 +78,6 @@ public class Player : MonoBehaviour
         // Throw paper toward cursor position
         Paper paper = Instantiate(paperPrefab, transform.position, Quaternion.identity).GetComponent<Paper>();
         paper.player = this;
-        thrownPapers.Add(paper);
         paper.Throw(playerToCursor, throwingSpeed, paperFallMultiplier);
         playerMovementController.LaunchToward(-playerToCursor);
 
@@ -88,7 +85,6 @@ public class Player : MonoBehaviour
             papersLeft--;
             if(papersLeft <= 0) {
                 spriteRenderer.sprite = bagEmptyPlayerSprite;
-
                 // Reset trajectory indicator
                 lineRenderer.positionCount = 0;
             }
@@ -99,7 +95,6 @@ public class Player : MonoBehaviour
     }
 
     public void RegainPaper(Paper paper) {
-        thrownPapers.Remove(paper);
         papersLeft++;
         resetPapersParticleSystem.Play();
         
@@ -108,8 +103,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void RemoveFromThrownPapers(Paper paper) {
-        thrownPapers.Remove(paper);
+    public void RemoveFromReturnablePapers(Paper paper) {
+        returnablePapers.Remove(paper);
     }
 
     void DrawTrajectory(Vector2 velocity)

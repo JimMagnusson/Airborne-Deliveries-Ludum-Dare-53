@@ -12,6 +12,8 @@ public class Paper : MonoBehaviour
 
     private float fallMultiplier = 2.5f;
 
+    private bool returned = false;
+
     private Rigidbody2D rb;
 
     private TrailRenderer trailRenderer;
@@ -27,6 +29,10 @@ public class Paper : MonoBehaviour
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
+    }
+
+    public bool IsReturning() {
+        return returning;
     }
 
     void Update()
@@ -71,7 +77,7 @@ public class Paper : MonoBehaviour
                 Mailbox mailbox = other.gameObject.GetComponent<Mailbox>();
                 if(mailbox.open) {
                     mailbox.Close();
-                    player.RemoveFromThrownPapers(this);
+                    player.RemoveFromReturnablePapers(this);
                     Destroy(this.gameObject);
                 }
                 else {
@@ -93,7 +99,7 @@ public class Paper : MonoBehaviour
         else if(!returning){
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             StopMoving();
-            player.returnPaperWhenGrounded = true;
+            player.AddToReturnablePapers(this);
         }
     }
     private void StopMoving() {
@@ -102,8 +108,10 @@ public class Paper : MonoBehaviour
     }
 
     private void HandleReturnToPlayer() {
-        player.RegainPaper(this);
-        
-        Destroy(this.gameObject);
+        if(!returned) {
+            returned = true;
+            player.RegainPaper(this);
+            Destroy(this.gameObject);
+        }
     }
 }
