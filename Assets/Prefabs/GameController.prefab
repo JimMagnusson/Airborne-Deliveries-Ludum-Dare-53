@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mailboxes:
   - {fileID: 0}
-  showWinScreenTime: 1.5
+  showWinScreenTime: 1.25
 --- !u!114 &3593789247807503122
 MonoBehaviour:
   m_ObjectHideFlags: 0

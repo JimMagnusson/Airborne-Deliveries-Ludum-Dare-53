@@ -10,6 +10,10 @@ public class LevelLoader : MonoBehaviour
         return SceneManager.GetActiveScene().buildIndex;
     }
 
+    public int GetSceneCount() {
+        return SceneManager.sceneCountInBuildSettings;
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

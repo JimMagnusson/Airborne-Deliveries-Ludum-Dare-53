@@ -402,7 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2845456846690025618, guid: d491bd5762df4dd46b5b0077f80385a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 2845456846690025618, guid: d491bd5762df4dd46b5b0077f80385a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -455,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2969493450353662666, guid: 78b12c0aa38a8144f908cd982eca38f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 2969493450353662666, guid: 78b12c0aa38a8144f908cd982eca38f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -506,14 +506,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
-      propertyPath: showWinScreenTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
-      propertyPath: mailboxes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
       propertyPath: mailboxes.Array.data[0]
       value: 
@@ -583,18 +575,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3773855305228278519, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855305228278519, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855305228278519, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9528302
-      objectReference: {fileID: 0}
     - target: {fileID: 3773855305678510217, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -682,14 +662,6 @@ PrefabInstance:
     - target: {fileID: 3773855305678510221, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855306126373104, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_Color.a
-      value: 0.39607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773855306126373110, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d649ab09a0145c42bf1b36481b9317b, type: 3}

@@ -27,7 +27,8 @@ public class GameController : MonoBehaviour
     }
 
     private void Win() {
-        if(levelLoader.GetCurrentSceneIndex() != 0) { // Dont show for main menu
+        int currIndex = levelLoader.GetCurrentSceneIndex();
+        if(currIndex != 0 && currIndex != levelLoader.GetSceneCount()-1) { // Dont show for main menu
             uIManager.ShowWinLevelScreen();
         }
         StartCoroutine(WaitAndChangeScene());
@@ -35,7 +36,12 @@ public class GameController : MonoBehaviour
 
     private IEnumerator WaitAndChangeScene() {
         yield return new WaitForSeconds(showWinScreenTime);
-        levelLoader.LoadNextScene();
+        if(levelLoader.GetCurrentSceneIndex() == levelLoader.GetSceneCount()-1) {
+            levelLoader.LoadSceneWithBuildIndex(0);
+        }
+        else {
+            levelLoader.LoadNextScene();
+        }
     }
 
     private void Update() {
