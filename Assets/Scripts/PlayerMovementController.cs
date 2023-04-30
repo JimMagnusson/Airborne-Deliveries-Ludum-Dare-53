@@ -32,8 +32,6 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private ParticleSystem jumpParticleSystem;
 
-
-
     public bool airborne = false;
     public bool launched = false;
     #endregion
@@ -42,6 +40,8 @@ public class PlayerMovementController : MonoBehaviour
 
     private Rigidbody2D rb;
     private AudioSource audioSource;
+
+    private Player player;
 
     #endregion
 
@@ -54,6 +54,7 @@ public class PlayerMovementController : MonoBehaviour
         // Get component references
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        player = GetComponent<Player>();
 
     }
 
@@ -133,11 +134,22 @@ public class PlayerMovementController : MonoBehaviour
                 transform.localScale.y,
                 transform.localScale.z
             );
+            player.resetPapersParticleSystemPivot.transform.localScale = new Vector3(
+                Mathf.Abs(transform.localScale.x),
+                transform.localScale.y,
+                transform.localScale.z
+            );
         }
         // Left
         else if (playerInput < 0)
         {
             body.transform.localScale = new Vector3(
+                -1 * Mathf.Abs(body.transform.localScale.x),
+                body.transform.localScale.y,
+                body.transform.localScale.z
+            );
+
+            player.resetPapersParticleSystemPivot.transform.localScale = new Vector3(
                 -1 * Mathf.Abs(body.transform.localScale.x),
                 body.transform.localScale.y,
                 body.transform.localScale.z

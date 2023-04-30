@@ -21,6 +21,7 @@ public class GroundCheck : MonoBehaviour
             playerMovementController.airborne = false;
             playerMovementController.launched = false;
             player.ResetPapersLeft();
+            player.ShowResetPapersEffect();
         }
     }
 

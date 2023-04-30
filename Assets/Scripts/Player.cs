@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioSource throwAudioSource;
 
+    [SerializeField] ParticleSystem resetPapersParticleSystem;
+
+    public GameObject resetPapersParticleSystemPivot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,12 +77,23 @@ public class Player : MonoBehaviour
         }
 
         throwAudioSource.Play();
+
+        // If on ground, reset papers directly
+        if(!playerMovementController.airborne) {
+            ResetPapersLeft();
+        }
         
     }
 
     public void ResetPapersLeft() {
         papersLeft = levelSettings.GetNumberOfPapers();
         spriteRenderer.sprite = bagFilledPlayerSprite;
+    }
+
+    public void ShowResetPapersEffect() {
+        // Separated because not sure if I want effect triggering when on ground.
+        // Is called when landing.
+        resetPapersParticleSystem.Play();
     }
 
     void DrawTrajectory(Vector2 velocity)

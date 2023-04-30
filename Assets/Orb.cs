@@ -17,6 +17,8 @@ public class Orb : MonoBehaviour
 
     [SerializeField] private float hitToIdleTime = 2f;
 
+    private bool recharging = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +26,12 @@ public class Orb : MonoBehaviour
         idleInnerFeedbacks.PlayFeedbacks();
     }
 
+    public bool IsRecharging() {
+        return recharging;
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Paper")) {
+        if(other.CompareTag("Paper") && !recharging) {
             idleOuterFeedbacks.StopFeedbacks();
             idleInnerFeedbacks.StopFeedbacks();
 
@@ -39,10 +45,12 @@ public class Orb : MonoBehaviour
     }
 
     private IEnumerator WaitAndGoToIdle() {
+        recharging = true;
         yield return new WaitForSeconds(hitToIdleTime);
         hitOuterFeedbacks.StopFeedbacks();
         hitInnerFeedbacks.StopFeedbacks();
         idleOuterFeedbacks.PlayFeedbacks();
         idleInnerFeedbacks.PlayFeedbacks();
+        recharging = false;
     }
 }

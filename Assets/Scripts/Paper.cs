@@ -53,6 +53,11 @@ public class Paper : MonoBehaviour
                 }
             }
         }
+        else if(other.gameObject.CompareTag("Orb")) {
+            if(!other.gameObject.GetComponent<Orb>().IsRecharging()) {
+                // Redirect paper toward sender
+            }
+        }
         else {
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
