@@ -30,18 +30,16 @@ public class Orb : MonoBehaviour
         return recharging;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Paper") && !recharging && !other.GetComponent<Paper>().IsReturning()){
-            idleOuterFeedbacks.StopFeedbacks();
-            idleInnerFeedbacks.StopFeedbacks();
+    public void HandlePaperHit() {
+        idleOuterFeedbacks.StopFeedbacks();
+        idleInnerFeedbacks.StopFeedbacks();
 
-            hitOuterFeedbacks.PlayFeedbacks();
-            hitInnerFeedbacks.PlayFeedbacks();
+        hitOuterFeedbacks.PlayFeedbacks();
+        hitInnerFeedbacks.PlayFeedbacks();
 
-            hitParticleSystem.Play();
-            hitAudioSource.Play();
-            StartCoroutine(WaitAndGoToIdle());
-        }
+        hitParticleSystem.Play();
+        hitAudioSource.Play();
+        StartCoroutine(WaitAndGoToIdle());
     }
 
     private IEnumerator WaitAndGoToIdle() {

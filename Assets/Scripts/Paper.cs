@@ -86,9 +86,11 @@ public class Paper : MonoBehaviour
             }
         }
         else if(other.gameObject.CompareTag("Orb") && !returning) {
-            if(!other.gameObject.GetComponent<Orb>().IsRecharging()) {
+            Orb orb = other.gameObject.GetComponent<Orb>();
+            if(!orb.IsRecharging()) {
                 StopMoving();
                 StartReturningPaper();
+                orb.HandlePaperHit();
             }
         }
         else if(other.gameObject.CompareTag("Player")) {
