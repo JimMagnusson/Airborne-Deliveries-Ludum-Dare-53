@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     public GameObject resetPapersParticleSystemPivot;
 
-    public Paper currentPaper;
+    public List<Paper> thrownPapers;
 
     public bool returnPaperWhenGrounded = false;
 
@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         levelSettings = FindObjectOfType<LevelSettings>();
         papersLeft = levelSettings.GetNumberOfPapers();
         lineRenderer.material.mainTextureScale = new Vector2(1f / lineWidth, 1.0f);
+        thrownPapers = new List<Paper>();
     }
 
 
@@ -64,8 +65,12 @@ public class Player : MonoBehaviour
 
         if(returnPaperWhenGrounded && !playerMovementController.airborne) {
             returnPaperWhenGrounded = false;
-            if(currentPaper != null) {
-                currentPaper.StartReturningPaper();
+
+
+            if(thrownPapers.Count > 0) {
+                foreach(Paper paper in thrownPapers) {
+                    paper.StartReturningPaper();
+                }
             }
         }
     }
@@ -75,7 +80,7 @@ public class Player : MonoBehaviour
         // Throw paper toward cursor position
         Paper paper = Instantiate(paperPrefab, transform.position, Quaternion.identity).GetComponent<Paper>();
         paper.player = this;
-        currentPaper = paper;
+        thrownPapers.Add(paper);
         paper.Throw(playerToCursor, throwingSpeed, paperFallMultiplier);
         playerMovementController.LaunchToward(-playerToCursor);
 
@@ -90,23 +95,21 @@ public class Player : MonoBehaviour
         }
 
         throwAudioSource.Play();
-
-        // If on ground, reset papers directly
-        if(!playerMovementController.airborne) {
-            ResetPapersLeft();
-        }
         
     }
 
-    public void ResetPapersLeft() {
-        papersLeft = levelSettings.GetNumberOfPapers();
-        spriteRenderer.sprite = bagFilledPlayerSprite;
+    public void RegainPaper(Paper paper) {
+        thrownPapers.Remove(paper);
+        papersLeft++;
+        resetPapersParticleSystem.Play();
+        
+        if(papersLeft == 1) {
+            spriteRenderer.sprite = bagFilledPlayerSprite;
+        }
     }
 
-    public void ShowResetPapersEffect() {
-        // Separated because not sure if I want effect triggering when on ground.
-        // Is called when landing.
-        resetPapersParticleSystem.Play();
+    public void RemoveFromThrownPapers(Paper paper) {
+        thrownPapers.Remove(paper);
     }
 
     void DrawTrajectory(Vector2 velocity)

@@ -13,6 +13,8 @@ public class Paper : MonoBehaviour
     private float fallMultiplier = 2.5f;
 
     private Rigidbody2D rb;
+
+    private TrailRenderer trailRenderer;
     private Vector2 throwDirection;
 
     private float speed;
@@ -24,6 +26,7 @@ public class Paper : MonoBehaviour
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -36,13 +39,19 @@ public class Paper : MonoBehaviour
         }
         else {
             // Go toward player
-            Vector2 paperToPlayer = (player.transform.position - transform.position).normalized;
-            rb.velocity = paperToPlayer * returningSpeed;
+
+            Vector2 paperToPlayer = player.transform.position - transform.position;
+            // To fix bug if enter2d doesnt fire
+            if(paperToPlayer.magnitude <= 0.5f) {
+                HandleReturnToPlayer();
+            }
+            rb.velocity = paperToPlayer.normalized * returningSpeed;
         }
     }
 
     public void StartReturningPaper() {
         returning = true;
+        trailRenderer.enabled = true;
     }
 
     public void Throw(Vector2 direction, float speed, float fallMultiplier) {
@@ -58,9 +67,11 @@ public class Paper : MonoBehaviour
         if(other.gameObject.CompareTag("Mailbox") && !returning) 
         {
             if(other.gameObject.GetComponent<Mailbox>().open) {
+
                 Mailbox mailbox = other.gameObject.GetComponent<Mailbox>();
                 if(mailbox.open) {
                     mailbox.Close();
+                    player.RemoveFromThrownPapers(this);
                     Destroy(this.gameObject);
                 }
                 else {
@@ -76,11 +87,7 @@ public class Paper : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("Player")) {
             if(returning) {
-                Player player = other.gameObject.GetComponent<Player>();
-                player.ResetPapersLeft();
-                player.ShowResetPapersEffect();
-                player.currentPaper = null;
-                Destroy(this.gameObject);
+                HandleReturnToPlayer();
             }
         }
         else if(!returning){
@@ -92,5 +99,11 @@ public class Paper : MonoBehaviour
     private void StopMoving() {
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
+    }
+
+    private void HandleReturnToPlayer() {
+        player.RegainPaper(this);
+        
+        Destroy(this.gameObject);
     }
 }
