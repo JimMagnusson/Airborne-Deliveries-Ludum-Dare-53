@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
 
+    public int GetCurrentSceneIndex() {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

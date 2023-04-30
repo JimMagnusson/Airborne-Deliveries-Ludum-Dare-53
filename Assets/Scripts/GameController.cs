@@ -27,7 +27,9 @@ public class GameController : MonoBehaviour
     }
 
     private void Win() {
-        uIManager.ShowWinLevelScreen();
+        if(levelLoader.GetCurrentSceneIndex() != 0) { // Dont show for main menu
+            uIManager.ShowWinLevelScreen();
+        }
         StartCoroutine(WaitAndChangeScene());
     }
 

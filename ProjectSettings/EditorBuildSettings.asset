@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: ac18d4435e91f29438789c57691a0975
+  - enabled: 1
     path: Assets/Scenes/Jump And Deliver.unity
     guid: 19f3cab96050cd1428a3dba2e563ef8b
   - enabled: 1
