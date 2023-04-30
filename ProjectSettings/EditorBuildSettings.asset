@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Orb Level 2.unity
     guid: 9e230709d27d86546bdd47c40eb67a65
   - enabled: 1
+    path: Assets/Scenes/Aerial Acrobatics 1.unity
+    guid: b215e27cd5fe2ca42adffe5c80c8bccb
+  - enabled: 1
     path: Assets/Scenes/Tough Single Launches.unity
     guid: 48d9a2eb6dcc52246bfe89c19cb71d37
   - enabled: 1
