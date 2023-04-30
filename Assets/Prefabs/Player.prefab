@@ -802,7 +802,7 @@ Transform:
   m_GameObject: {fileID: 1425338816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.21899986, y: -0.19099998, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5055874793398341727}
@@ -881,7 +881,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -1752,7 +1752,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -6582,7 +6582,9 @@ MonoBehaviour:
   limitPapers: 1
   throwAudioSource: {fileID: 1357252124}
   resetPapersParticleSystem: {fileID: 1425338819}
-  resetPapersParticleSystemPivot: {fileID: 0}
+  resetPapersParticleSystemPivot: {fileID: 1390118716481701566}
+  currentPaper: {fileID: 0}
+  returnPaperWhenGrounded: 0
 --- !u!114 &294602426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7429,7 +7431,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 0.2
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2

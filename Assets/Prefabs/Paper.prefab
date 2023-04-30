@@ -133,6 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrown: 0
   hitParticles: {fileID: 7977742774810529214, guid: bf13c55b95cf323498329cd99d370d70, type: 3}
+  returningSpeed: 5
+  player: {fileID: 0}
 --- !u!50 &1799262152
 Rigidbody2D:
   serializedVersion: 4
@@ -152,7 +154,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1799262153
 BoxCollider2D:

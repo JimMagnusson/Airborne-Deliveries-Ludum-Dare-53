@@ -8,12 +8,18 @@ public class Paper : MonoBehaviour
 
     [SerializeField] private GameObject hitParticles;
 
+    [SerializeField] private float returningSpeed = 2.0f;
+
     private float fallMultiplier = 2.5f;
 
     private Rigidbody2D rb;
     private Vector2 throwDirection;
 
     private float speed;
+
+    private bool returning = false;
+
+    public Player player; // is set when spawned in Player.cs
     
 
     private void Awake() {
@@ -23,10 +29,20 @@ public class Paper : MonoBehaviour
     void Update()
     {
         // Remove low physics feel
-        
-        if(rb.velocity.y < 0) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        if(!returning) {
+            if(rb.velocity.y < 0) {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
         }
+        else {
+            // Go toward player
+            Vector2 paperToPlayer = (player.transform.position - transform.position).normalized;
+            rb.velocity = paperToPlayer * returningSpeed;
+        }
+    }
+
+    public void StartReturningPaper() {
+        returning = true;
     }
 
     public void Throw(Vector2 direction, float speed, float fallMultiplier) {
@@ -39,7 +55,7 @@ public class Paper : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Mailbox")) 
+        if(other.gameObject.CompareTag("Mailbox") && !returning) 
         {
             if(other.gameObject.GetComponent<Mailbox>().open) {
                 Mailbox mailbox = other.gameObject.GetComponent<Mailbox>();
@@ -49,18 +65,32 @@ public class Paper : MonoBehaviour
                 }
                 else {
                     Instantiate(hitParticles, transform.position, Quaternion.identity);
-                    Destroy(this.gameObject);
                 }
             }
         }
-        else if(other.gameObject.CompareTag("Orb")) {
+        else if(other.gameObject.CompareTag("Orb") && !returning) {
             if(!other.gameObject.GetComponent<Orb>().IsRecharging()) {
-                // Redirect paper toward sender
+                StopMoving();
+                StartReturningPaper();
             }
         }
-        else {
-            Instantiate(hitParticles, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+        else if(other.gameObject.CompareTag("Player")) {
+            if(returning) {
+                Player player = other.gameObject.GetComponent<Player>();
+                player.ResetPapersLeft();
+                player.ShowResetPapersEffect();
+                player.currentPaper = null;
+                Destroy(this.gameObject);
+            }
         }
+        else if(!returning){
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            StopMoving();
+            player.returnPaperWhenGrounded = true;
+        }
+    }
+    private void StopMoving() {
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
     }
 }

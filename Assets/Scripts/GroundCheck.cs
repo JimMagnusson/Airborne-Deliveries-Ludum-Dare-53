@@ -9,7 +9,7 @@ public class GroundCheck : MonoBehaviour
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerMovementController = GetComponentInParent<PlayerMovementController>();
         player = GetComponentInParent<Player>();
@@ -20,8 +20,8 @@ public class GroundCheck : MonoBehaviour
         if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Mailbox")) {
             playerMovementController.airborne = false;
             playerMovementController.launched = false;
-            player.ResetPapersLeft();
-            player.ShowResetPapersEffect();
+            //player.ResetPapersLeft();
+            //player.ShowResetPapersEffect();
         }
     }
 

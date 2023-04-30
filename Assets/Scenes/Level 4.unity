@@ -337,11 +337,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2591414550226015511, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
   m_PrefabInstance: {fileID: 2591414549983744930}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1340349226 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1390118716481701566, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-  m_PrefabInstance: {fileID: 2591414549983744930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1354150645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,26 +651,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1425338817, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425338817, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425338817, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425338819, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1425338819, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2591414550226015504, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
       propertyPath: m_Name
       value: Player
@@ -723,14 +698,6 @@ PrefabInstance:
     - target: {fileID: 2591414550226015511, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2591414550226015515, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: resetPapersParticleSystemPivot
-      value: 
-      objectReference: {fileID: 1340349226}
-    - target: {fileID: 5797020082234304726, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a904a696858145f45a3300fd9c57ca35, type: 3}

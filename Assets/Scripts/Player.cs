@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
 
     public GameObject resetPapersParticleSystemPivot;
 
+    public Paper currentPaper;
+
+    public bool returnPaperWhenGrounded = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,12 +61,21 @@ public class Player : MonoBehaviour
         if(papersLeft > 0) {
             DrawTrajectory(playerToCursor*throwingSpeed);
         }
+
+        if(returnPaperWhenGrounded && !playerMovementController.airborne) {
+            returnPaperWhenGrounded = false;
+            if(currentPaper != null) {
+                currentPaper.StartReturningPaper();
+            }
+        }
     }
 
     private void HandlePaperThrowing(Vector2 playerToCursor) {
         
         // Throw paper toward cursor position
         Paper paper = Instantiate(paperPrefab, transform.position, Quaternion.identity).GetComponent<Paper>();
+        paper.player = this;
+        currentPaper = paper;
         paper.Throw(playerToCursor, throwingSpeed, paperFallMultiplier);
         playerMovementController.LaunchToward(-playerToCursor);
 
