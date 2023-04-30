@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Jump And Deliver.unity
+    guid: 19f3cab96050cd1428a3dba2e563ef8b
+  - enabled: 1
+    path: Assets/Scenes/Launch Vertically.unity
+    guid: a24a37a530e2b5741ab216e4b185e56a
+  - enabled: 1
+    path: Assets/Scenes/Launch Horizontally.unity
+    guid: a444a6900da6d414bb4248c33de1d9ed
+  - enabled: 1
+    path: Assets/Scenes/Triple Aimed Delivery.unity
+    guid: b17cc1dc866aaad4c98ca726bd1734a9
+  - enabled: 1
     path: Assets/Scenes/Orb Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level 2.unity
-    guid: 2e1214e024c47e547904b1f6aea705dc
-  - enabled: 1
     path: Assets/Scenes/Orb Level 2.unity
     guid: 9e230709d27d86546bdd47c40eb67a65
-  - enabled: 1
-    path: Assets/Scenes/Level 5.unity
-    guid: eeaab720b694ef94da41e3a98179e0bb
   m_configObjects: {}
