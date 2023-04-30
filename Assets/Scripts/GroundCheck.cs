@@ -5,12 +5,14 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     private PlayerMovementController playerMovementController;
+    private Player player;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMovementController = GetComponentInParent<PlayerMovementController>();
+        player = GetComponentInParent<Player>();
         rb = GetComponentInParent<Rigidbody2D>();
     }
 
@@ -18,6 +20,7 @@ public class GroundCheck : MonoBehaviour
         if(other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Mailbox")) {
             playerMovementController.airborne = false;
             playerMovementController.launched = false;
+            player.ResetPapersLeft();
         }
     }
 

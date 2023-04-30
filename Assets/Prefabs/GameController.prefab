@@ -78,4 +78,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da67dc395ac9984182ca5db73e150d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPapers: 3
+  numberOfPapers: 1

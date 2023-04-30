@@ -647,13 +647,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1357252124, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
+    - target: {fileID: 1550294766, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
+      propertyPath: managedReferences[578400976646438923].AnimateX
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1357252124, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
+    - target: {fileID: 1550294766, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
+      propertyPath: managedReferences[578400976646438923].RemapCurveOne
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550294766, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
+      propertyPath: managedReferences[578400976646438923].AnimateScaleTweenX.Curve.m_Curve.Array.data[1].time
+      value: 0.795842
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550294766, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
+      propertyPath: managedReferences[578400976646438923].AnimateScaleTweenX.Curve.m_Curve.Array.data[1].value
+      value: 0.99645615
       objectReference: {fileID: 0}
     - target: {fileID: 2591414550226015504, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
       propertyPath: m_Name
@@ -702,6 +710,10 @@ PrefabInstance:
     - target: {fileID: 2591414550226015511, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591414550226015515, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
+      propertyPath: limitPapers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a904a696858145f45a3300fd9c57ca35, type: 3}
@@ -830,10 +842,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1361477213, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
-      propertyPath: numberOfPapers
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3593789247807503120, guid: 706e383ef0700d24abcac0fa07868b3f, type: 3}
       propertyPath: showWinScreenTime
       value: 1.5

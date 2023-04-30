@@ -24,6 +24,10 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2.0f;
 
     [SerializeField] private MMFeedbacks movement_MMF;
+
+    [SerializeField] private MMFeedbacks jumpFeedbacks;
+
+    [SerializeField] private MMFeedbacks launchFeedbacks;
     [SerializeField] private AudioClip jumpClip;
 
     [SerializeField] private ParticleSystem jumpParticleSystem;
@@ -115,6 +119,7 @@ public class PlayerMovementController : MonoBehaviour
         audioSource.clip = jumpClip;
         audioSource.Play();
         jumpParticleSystem.Play();
+        jumpFeedbacks.PlayFeedbacks();
     }
 
     // Swap the player sprite scale to face the movement direction
@@ -144,6 +149,7 @@ public class PlayerMovementController : MonoBehaviour
         if(airborne) {
             rb.velocity = direction * launchVelocity;
             launched = true;
+            //launchFeedbacks.PlayFeedbacks();
             //audioSource.clip = launchClip;
             //audioSource.Play();
         }

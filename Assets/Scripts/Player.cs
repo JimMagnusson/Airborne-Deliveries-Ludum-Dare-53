@@ -41,27 +41,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 mouseWorldpos3D = Camera.main.ScreenToWorldPoint(mousePos);  
+        Vector2 mouseWorldPos = new Vector3(mouseWorldpos3D.x,mouseWorldpos3D.y);
+        Vector2 playerToCursor = (mouseWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
+
         if(Input.GetMouseButtonDown(0) && (!limitPapers || papersLeft > 0)) {
-            HandlePaperThrowing();
+            HandlePaperThrowing(playerToCursor);
         }
 
-        // TODO: refactor
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 mouseWorldpos3D = Camera.main.ScreenToWorldPoint(mousePos);  
-        Vector2 mouseWorldPos = new Vector3(mouseWorldpos3D.x,mouseWorldpos3D.y);
-        Vector2 playerToCursor = (mouseWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
-
-        DrawTrajectory(playerToCursor*throwingSpeed);
+        if(papersLeft > 0) {
+            DrawTrajectory(playerToCursor*throwingSpeed);
+        }
     }
 
-    private void HandlePaperThrowing() {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 mouseWorldpos3D = Camera.main.ScreenToWorldPoint(mousePos);  
-        Vector2 mouseWorldPos = new Vector3(mouseWorldpos3D.x,mouseWorldpos3D.y);
+    private void HandlePaperThrowing(Vector2 playerToCursor) {
+        
         // Throw paper toward cursor position
         Paper paper = Instantiate(paperPrefab, transform.position, Quaternion.identity).GetComponent<Paper>();
-
-        Vector2 playerToCursor = (mouseWorldPos - new Vector2(transform.position.x, transform.position.y)).normalized;
         paper.Throw(playerToCursor, throwingSpeed, paperFallMultiplier);
         playerMovementController.LaunchToward(-playerToCursor);
 
@@ -69,6 +66,9 @@ public class Player : MonoBehaviour
             papersLeft--;
             if(papersLeft <= 0) {
                 spriteRenderer.sprite = bagEmptyPlayerSprite;
+
+                // Reset trajectory indicator
+                lineRenderer.positionCount = 0;
             }
         }
 
@@ -76,11 +76,10 @@ public class Player : MonoBehaviour
         
     }
 
-    /*
-    if(rb.velocity.y < 0) {
-        rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+    public void ResetPapersLeft() {
+        papersLeft = levelSettings.GetNumberOfPapers();
+        spriteRenderer.sprite = bagFilledPlayerSprite;
     }
-    */
 
     void DrawTrajectory(Vector2 velocity)
     {
