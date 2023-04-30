@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
-  fallMultiplier: 1.5
+  hitParticles: {fileID: 7977742774810529214, guid: bf13c55b95cf323498329cd99d370d70, type: 3}
 --- !u!50 &1799262152
 Rigidbody2D:
   serializedVersion: 4

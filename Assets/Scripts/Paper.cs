@@ -6,6 +6,8 @@ public class Paper : MonoBehaviour
 {
     public bool thrown = false;
 
+    [SerializeField] private GameObject hitParticles;
+
     private float fallMultiplier = 2.5f;
 
     private Rigidbody2D rb;
@@ -33,6 +35,7 @@ public class Paper : MonoBehaviour
         throwDirection = direction.normalized;
         rb.velocity = throwDirection * this.speed;
         this.fallMultiplier = fallMultiplier;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -45,12 +48,13 @@ public class Paper : MonoBehaviour
                     Destroy(this.gameObject);
                 }
                 else {
-                    mailbox.Open();
+                    Instantiate(hitParticles, transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
             }
         }
         else {
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

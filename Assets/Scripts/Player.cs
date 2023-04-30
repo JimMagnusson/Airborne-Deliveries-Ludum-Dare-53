@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool limitPapers = false;
 
+    [SerializeField] private AudioSource throwAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
         lineRenderer.material.mainTextureScale = new Vector2(1f / lineWidth, 1.0f);
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
@@ -69,6 +71,8 @@ public class Player : MonoBehaviour
                 spriteRenderer.sprite = bagEmptyPlayerSprite;
             }
         }
+
+        throwAudioSource.Play();
         
     }
 

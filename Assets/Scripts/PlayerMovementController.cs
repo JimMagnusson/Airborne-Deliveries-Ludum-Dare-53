@@ -24,9 +24,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2.0f;
 
     [SerializeField] private MMFeedbacks movement_MMF;
-
-    [SerializeField] private AudioClip launchClip;
     [SerializeField] private AudioClip jumpClip;
+
+    [SerializeField] private ParticleSystem jumpParticleSystem;
 
 
 
@@ -98,10 +98,7 @@ public class PlayerMovementController : MonoBehaviour
         
 
         if(Input.GetButton("Jump") && !airborne) {
-            rb.velocity = new Vector2(rb.velocity.x, Vector2.up.y * jumpVelocity);
-            airborne = true;
-            audioSource.clip = jumpClip;
-            audioSource.Play();
+            Jump();
         }
 
         if(rb.velocity.y < 0) {
@@ -110,6 +107,14 @@ public class PlayerMovementController : MonoBehaviour
         else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) {
             rb.velocity +=  Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    void Jump() {
+        rb.velocity = new Vector2(rb.velocity.x, Vector2.up.y * jumpVelocity);
+        airborne = true;
+        audioSource.clip = jumpClip;
+        audioSource.Play();
+        jumpParticleSystem.Play();
     }
 
     // Swap the player sprite scale to face the movement direction
@@ -139,8 +144,8 @@ public class PlayerMovementController : MonoBehaviour
         if(airborne) {
             rb.velocity = direction * launchVelocity;
             launched = true;
-            audioSource.clip = launchClip;
-            audioSource.Play();
+            //audioSource.clip = launchClip;
+            //audioSource.Play();
         }
     }
 
