@@ -39,14 +39,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Orb Level 4.unity
     guid: edc03a09603a13b40b122d245f414139
   - enabled: 1
-    path: Assets/Scenes/The Eye.unity
-    guid: 0889af2e99703ac4187c6588d3263e6d
-  - enabled: 1
     path: Assets/Scenes/Tough Single Launches.unity
     guid: 48d9a2eb6dcc52246bfe89c19cb71d37
   - enabled: 1
+    path: Assets/Scenes/The Eye.unity
+    guid: 0889af2e99703ac4187c6588d3263e6d
+  - enabled: 1
     path: Assets/Scenes/Aerial Acrobatics 1.unity
     guid: b215e27cd5fe2ca42adffe5c80c8bccb
+  - enabled: 1
+    path: Assets/Scenes/Final Level.unity
+    guid: 78c05db60c2e8744fb04776e38e36da7
   - enabled: 1
     path: Assets/Scenes/End Menu.unity
     guid: 46e01c9a879da0c4da2d8c6508df3cab
