@@ -1,7 +1,7 @@
 # Airborne Deliveries-Ludum-Dare 53
 Play here: https://jimmagnusson.itch.io/airborne-deliveries
 
-Ludum Dare 53 Jam entry: https://ldjam.com/events/ludum-dare/53/airborne-deliveries
+Ludum Dare 53 Compo entry: https://ldjam.com/events/ludum-dare/53/airborne-deliveries
 
 Made in 48 hours
 
